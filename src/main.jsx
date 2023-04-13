@@ -1,11 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css"
+
+// PAGES
+import Catalog from "./routes/catalog"
+import ErrorPage from "./routes/404";
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Catalog />,
+    errorElement: <ErrorPage />
+  },
+]);
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
